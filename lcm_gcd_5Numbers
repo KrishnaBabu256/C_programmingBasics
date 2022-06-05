@@ -1,0 +1,76 @@
+// lcm and gcd  of five numbers cobined prog
+#include<stdio.h>
+int main ()
+{
+	int num[5],large,small,prod=1,i,j,count=0,count1=0;
+	printf("enter five numbers \n");
+	// scan the numbers
+	for (i=0;i<5;i++)
+	{	
+		scanf("%d",&num[i]);
+	}
+	large =num[0];
+	// find the latgest number
+	for (i=0;i<5;i++)
+	{
+		if(num[i]>large)	
+			large = num[i];
+	}
+	//printf("large is = %d\n",large);
+	// find the product of numbers
+	for(i=0;i<5;i++)
+	{
+		prod=prod*num[i];
+	}
+	printf("product  is = %d\n",prod);
+	// checking divisibility of all numbers
+	for (i=large;i<=prod;i+=large)
+	{
+		for(j=0;j<5;j++)
+		{	
+			if (i%num[j]==0)
+				count++;
+			else 
+			{	
+				count=0;
+				break;
+			}
+		}	
+			if (count == 5)
+				break;
+	}
+	
+	printf("LCM is =%d\n",i);
+	small = num[0];
+	// finding the small number among 5
+	for (i=0;i<5;i++)
+	{
+		if(small>num[i])
+			small =num[i];
+	}
+	//printf("small is =%d\n",small);
+	// logic checking the divisibility
+	for (j=2 ;j<=small;j++)
+	{
+		for(i=0;i<5;i++)
+		{
+			
+			if(num[i]%j ==0)
+				count1++;
+			else
+			{	
+				count1=0;
+				break;
+			}
+		}
+		if(count ==5)
+			break;
+	}
+	if (count1==5)
+		printf(" GCD IS =%d\n",j);
+	else
+		printf("GCD IS = 1\n");
+
+	return 0;	
+
+}
